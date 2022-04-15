@@ -3,6 +3,7 @@ import Title from "./components/Title";
 import Form from "./components/Form";
 import Results from "./components/Results";
 import './App.css';
+import { SemanticClassificationFormat } from "typescript";
 
 type ResultsStateType = {
   country: string;
@@ -33,6 +34,7 @@ function App() {
           conditionText: data.current.condition.text,
           icon: data.current.condition.icon
         })
+        setCity("");
       })
       .catch(err => alert("エラーが発生しました。ページをリロードして、もう一度トライしてください。"))
   }
@@ -41,7 +43,7 @@ function App() {
     <div className="wrapper">
       <div className="container">
         <Title />
-        <Form setCity={setCity} getWeather={getWeather} />
+        <Form setCity={setCity} getWeather={getWeather} city={city} />
         <Results results={results} />
       </div>
     </div>
